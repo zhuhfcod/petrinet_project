@@ -11,7 +11,8 @@
     "plugin": "node ./node_modules/webgme-engine/src/bin/run_plugin.js",
     "pluginHook": "node ./node_modules/webgme-engine/src/bin/plugin_hook.js",
     "users": "node ./node_modules/webgme-engine/src/bin/usermanager.js",
-    "clean_up": "node ./node_modules/webgme-engine/src/bin/clean_up.js"
+    "clean_up": "node ./node_modules/webgme-engine/src/bin/clean_up.js",
+    "webgme": "node ./node_modules/webgme-cli/bin/webgme"
   },
   "version": "1.0.0",
   "peerDependencies": {
