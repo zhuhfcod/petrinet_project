@@ -98,7 +98,7 @@ class Classification(PluginBase):
         logger.info('Workflow net: {0}'.format(is_workflow))
 
 
-        self.send_notification("Free Choice{0}: ".format(is_free_choice))    
-        self.send_notification("StateMachine{0}: ".format(is_state_machine))
-        self.send_notification("Marked Graph{0}: ".format(is_marked_graph))
-        self.send_notification("Workflow Net{0}: ".format(is_workflow))
+        self.send_notification("Free Choice: {0} \n StateMachine: {1} \n Marked Graph: {2} \n Workflow Net: {3}".format(is_free_choice, is_state_machine, is_marked_graph, is_workflow))    
+        # self.send_notification("StateMachine: {0}".format(is_state_machine))
+        # self.send_notification("Marked Graph: {0}".format(is_marked_graph))
+        # self.send_notification("Workflow Net: {0}".format(is_workflow))

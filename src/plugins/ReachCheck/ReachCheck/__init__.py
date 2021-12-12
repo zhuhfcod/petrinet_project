@@ -21,7 +21,8 @@ class ReachCheck(PluginBase):
         core = self.core
         root_node = self.root_node
         META = self.META
-        active_node = self.active_node # we assume the active node is the state machine node
+        active_node = self.active_node 
+        logger = self.logger
 
         visited = set()
         states = set()
@@ -32,16 +33,16 @@ class ReachCheck(PluginBase):
         for node in nodes:
             if core.is_type_of(node, META['State']):
                 states.add(core.get_path(node))
+            if core.is_type_of(node, META['Transition']):
+                states.add(core.get_path(node))
             if core.is_type_of(node, META['Init']):
                 visited.add(core.get_path(node))
         for node in nodes:
-            if core.is_type_of(node, META['Transition']):
+            if core.is_type_of(node, META['Arc']):
                 if core.get_pointer_path(node, 'src') in graph:
                     graph[core.get_pointer_path(node, 'src')].append(core.get_pointer_path(node, 'dst'))
                 else:
                     graph[core.get_pointer_path(node, 'src')] = [core.get_pointer_path(node, 'dst')]
-        
-        # now we just update the visited set
         old_size = len(visited)
         new_size = 0
 
@@ -54,14 +55,10 @@ class ReachCheck(PluginBase):
                         visited.add(next_state)
             new_size = len(visited)
         
-        # now we just simply check if we have a difference between the foll set of states and the reachable ones
         if len(states.difference(visited)) == 0:
-            # everything is fine
-            self.send_notification('Your state machine is well formed')
+            self.send_notification('Your petri net is well formed')
         else:
-            # we need some states that are unreachable
-            self.send_notification('Your state machine has unreachable states')
-
+            self.send_notification('Your petri net has unreachable states')
 
 
 
