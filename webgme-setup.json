@@ -1,4 +1,36 @@
 {
-  "components": {},
-  "dependencies": {}
+  "components": {
+    "plugins": {
+      "ReachCheck": {
+        "src": "src/plugins/ReachCheck",
+        "test": "test/plugins/ReachCheck"
+      },
+      "Classification": {
+        "src": "src/plugins/Classification",
+        "test": "test/plugins/Classification"
+      }
+    },
+    "visualizers": {
+      "SimSM": {
+        "src": "panels/SimSM/SimSMPanel",
+        "title": "SimSM",
+        "panel": "src/visualizers/panels/SimSM",
+        "secondary": false,
+        "widget": "src/visualizers/widgets/SimSM"
+      }
+    },
+    "seeds": {
+      "petrinet": {
+        "src": "src/seeds/petrinet"
+      },
+      "petrinet_seed": {
+        "src": "src/seeds/petrinet_seed"
+      }
+    }
+  },
+  "dependencies": {
+    "plugins": {},
+    "visualizers": {},
+    "seeds": {}
+  }
 }
